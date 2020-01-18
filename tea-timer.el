@@ -1,6 +1,6 @@
 ;;; tea-timer.el --- Simple countdown timer      -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2018  Daniel Kraus
+;; Copyright (C) 2018-2020  Daniel Kraus
 
 ;; Author: Daniel Kraus <daniel@kraus.my>
 ;; Version: 0.1
@@ -30,6 +30,7 @@
 
 (require 'request)
 
+
 (defgroup tea-timer nil
   "tea-timer"
   :prefix "tea-timer-"
@@ -37,17 +38,17 @@
 
 (defcustom tea-timer-default-duration 2.5
   "Default timer duration."
-  :type 'integer
-  :safe #'integerp
-  :group 'tea-timer)
+  :type 'number
+  :safe #'numberp)
 
 (defcustom tea-timer-message "Tea ready!"
   "Message to show when timer is up."
-  :type 'string
-  :group 'tea-timer)
+  :type 'string)
+
 
 (defvar tea-timer--timer nil
   "Store current running timer.")
+
 
 (defun tea-timer-tea-ready ()
   "Display tea ready message and reset timer."
