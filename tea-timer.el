@@ -42,6 +42,9 @@
   "Message to show when timer is up."
   :type 'string)
 
+(defcustom tea-timer-urgency 'normal
+  "The urgency level of the D-Bus notification.
+Either low, normal or critical.")
 
 (defvar tea-timer--timer nil
   "Store current running timer.")
@@ -49,9 +52,10 @@
 
 (defun tea-timer-tea-ready ()
   "Display tea ready message and reset timer."
-  (if (require 'alert nil 'no-error)
-      (alert tea-timer-message)
-    (message tea-timer-message))
+  (notifications-notify
+   :title tea-timer-message
+   :urgency tea-timer-urgency)
+  (message tea-timer-message)
   (setq tea-timer--timer nil))
 
 ;;;###autoload
