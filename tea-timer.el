@@ -28,9 +28,6 @@
 
 ;;; Code:
 
-(require 'request)
-
-
 (defgroup tea-timer nil
   "tea-timer"
   :prefix "tea-timer-"
