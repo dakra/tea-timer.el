@@ -28,6 +28,9 @@
 
 ;;; Code:
 
+(require 'notifications)
+
+
 (defgroup tea-timer nil
   "tea-timer"
   :prefix "tea-timer-"
@@ -44,7 +47,11 @@
 
 (defcustom tea-timer-urgency 'normal
   "The urgency level of the D-Bus notification.
-Either low, normal or critical.")
+Either low, normal or critical."
+  :type '(choice
+          (const :tag "Low" low)
+          (const :tag "Normal" normal)
+          (const :tag "High" high)))
 
 (defvar tea-timer--timer nil
   "Store current running timer.")
